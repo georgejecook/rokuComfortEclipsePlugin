@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/RokuComfortFeature_1.0.1.qualifier.jar" id="RokuComfortFeature" version="1.0.1.qualifier"/>
+</site>

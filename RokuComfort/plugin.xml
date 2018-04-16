@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Tantawowa Roku extras for improved productivity"
+            id="com.tantawowa.rokucomfort.category">
+      </category>
+      <command
+            name="Switch brs/xml files"
+            categoryId="com.tantawowa.rokucomfort.category"
+            id="com.tantawowa.rokucomfort.SwitchFile">
+      </command>
+      <command
+            categoryId="com.tantawowa.rokucomfort.category"
+            id="com.tantawowa.rokucomfort.JumpTo"
+            name="Navigate To Location">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.tantawowa.rokucomfort.SwitchFile"
+            class="com.tantawowa.rokucomfort.SwitchFileHandler">
+      </handler>
+      <handler
+            class="com.tantawowa.rokucomfort.JumpToHandler"
+            commandId="com.tantawowa.rokucomfort.JumpTo">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.tantawowa.rokucomfort.SwitchFile"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+2"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="com.tantawowa.rokucomfort.JumpTo"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+3">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Roku Extras"
+               mnemonic="S"
+               id="com.tantawowa.rokucomfort.menu">
+            <command
+                  commandId="com.tantawowa.rokucomfort.SwitchFile"
+                  mnemonic="S"
+                  id="com.tantawowa.rokucomfort.menu.SwitchFileCommand">
+            </command>
+            <command
+                  commandId="com.tantawowa.rokucomfort.JumpTo"
+                  id="com.tantawowa.rokucomfort.menu.JumpToCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.tantawowa.rokucomfort.toolbar">
+            <command
+                  commandId="com.tantawowa.rokucomfort.SwitchFile"
+                  icon="icons/sample.gif"
+                  id="com.tantawowa.rokucomfort.toolbar.SwitchFileCommand"
+                  tooltip="Switch between xml and brs file">
+            </command>
+            <command
+                  commandId="com.tantawowa.rokucomfort.JumpTo"
+                  icon="icons/sample.gif"
+                  tooltip="Jump To Location"
+                  id="com.tantawowa.rokucomfort.toolbar.JumpToCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
