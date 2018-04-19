@@ -27,6 +27,7 @@ import org.eclipse.ui.ide.IDE;
 public class NewSceneGraphWizard extends Wizard implements INewWizard {
 	private NewSceneGraphWizardPage page;
 	private ISelection selection;
+	private String baseType;
 
 	/**
 	 * Constructor for NewSceneGraphWizard.
@@ -52,6 +53,7 @@ public class NewSceneGraphWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		final String containerName = page.getContainerName();
 		final String fileName = page.getFileName();
+		baseType = page.getBaseType();
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
@@ -176,13 +178,12 @@ public class NewSceneGraphWizard extends Wizard implements INewWizard {
 				"	</children>\n" + 
 				"\n" + 
 				"</component>\n";
-		String typeName = "BaseController";
 		String name = file.getName().replace(".xml", "");
 		IPath p = file.getProjectRelativePath();
 		String pathName = file.getProjectRelativePath().toString().replace(".xml", ".brs");
 		contents = contents.replace("$NAME$", name);
 		contents = contents.replace("$BRS_PATH$", pathName);
-		contents = contents.replace("$TYPE$", typeName);
+		contents = contents.replace("$TYPE$", baseType);
 				
 		return new ByteArrayInputStream(contents.getBytes());
 	}

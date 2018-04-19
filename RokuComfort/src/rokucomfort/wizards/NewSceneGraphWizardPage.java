@@ -4,6 +4,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.IDialogPage;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -15,6 +16,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -30,7 +32,8 @@ public class NewSceneGraphWizardPage extends WizardPage {
 	private Text containerText;
 
 	private Text fileText;
-	
+	private Combo baseTypeCombo;
+	private String BaseType;
 	private ISelection selection;
 
 	/**
@@ -84,6 +87,19 @@ public class NewSceneGraphWizardPage extends WizardPage {
 				dialogChanged();
 			}
 		});
+
+		// checkbox
+		label = new Label(container, SWT.NULL);
+		label = new Label(container, SWT.NULL);
+		label.setText("&Base type:");
+
+		baseTypeCombo = new Combo(container, SWT.BORDER | SWT.SINGLE);
+		String items[] = { "BaseController", "Group", "", "Task", "LayoutGroup", "Rectangle",
+				"TabbedSceneController", "NavigationSceneController" };
+		baseTypeCombo.setItems(items);
+		baseTypeCombo.select(0);
+		gd = new GridData(GridData.FILL_HORIZONTAL);
+		baseTypeCombo.setLayoutData(gd);
 		initialize();
 		dialogChanged();
 		setControl(container);
@@ -94,8 +110,7 @@ public class NewSceneGraphWizardPage extends WizardPage {
 	 */
 
 	private void initialize() {
-		if (selection != null && selection.isEmpty() == false
-				&& selection instanceof IStructuredSelection) {
+		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
 			IStructuredSelection ssel = (IStructuredSelection) selection;
 			if (ssel.size() > 1)
 				return;
@@ -113,14 +128,13 @@ public class NewSceneGraphWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Uses the standard container selection dialog to choose the new value for
-	 * the container field.
+	 * Uses the standard container selection dialog to choose the new value for the
+	 * container field.
 	 */
 
 	private void handleBrowse() {
-		ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-				getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-				"Select new file container");
+		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(),
+				ResourcesPlugin.getWorkspace().getRoot(), false, "Select new file container");
 		if (dialog.open() == ContainerSelectionDialog.OK) {
 			Object[] result = dialog.getResult();
 			if (result.length == 1) {
@@ -134,16 +148,14 @@ public class NewSceneGraphWizardPage extends WizardPage {
 	 */
 
 	private void dialogChanged() {
-		IResource container = ResourcesPlugin.getWorkspace().getRoot()
-				.findMember(new Path(getContainerName()));
+		IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getContainerName()));
 		String fileName = getFileName();
 
 		if (getContainerName().length() == 0) {
 			updateStatus("File container must be specified");
 			return;
 		}
-		if (container == null
-				|| (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
+		if (container == null || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
 			updateStatus("File container must exist");
 			return;
 		}
@@ -181,5 +193,9 @@ public class NewSceneGraphWizardPage extends WizardPage {
 
 	public String getFileName() {
 		return fileText.getText();
+	}
+
+	public String getBaseType() {
+		return baseTypeCombo.getText();
 	}
 }

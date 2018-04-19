@@ -2,7 +2,7 @@
 <feature
       id="RokuComfortFeature"
       label="RokuComfortFeature"
-      version="1.0.1.2"
+      version="1.0.1.4"
       provider-name="Tantawowa">
 
    <description url="http://www.example.com/description">
@@ -33,7 +33,7 @@
          id="RokuComfort"
          download-size="0"
          install-size="0"
-         version="1.0.2"
+         version="1.0.3"
          unpack="false"/>
 
 </feature>

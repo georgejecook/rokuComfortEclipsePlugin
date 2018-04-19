@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RokuComfort
 Bundle-SymbolicName: RokuComfort;singleton:=true
-Bundle-Version: 1.0.2
+Bundle-Version: 1.0.4
 Bundle-Activator: com.tantawowa.rokucomfort.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text;bundle-version="3.12.2",
  org.eclipse.wst.xml.ui;bundle-version="1.1.800",
  org.eclipse.ui.ide.application;bundle-version="1.2.0",
- org.eclipse.core.resources;bundle-version="3.12.0"
+ org.eclipse.core.resources;bundle-version="3.12.0",
+ org.eclipse.ui.navigator.resources;bundle-version="3.6.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
