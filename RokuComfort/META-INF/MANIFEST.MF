@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RokuComfort
 Bundle-SymbolicName: RokuComfort;singleton:=true
-Bundle-Version: 1.0.4
+Bundle-Version: 1.0.1.7
 Bundle-Activator: com.tantawowa.rokucomfort.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
