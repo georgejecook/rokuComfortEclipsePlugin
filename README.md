@@ -3,7 +3,7 @@ Adds additional useful features to eclipse when doing roku development.
 
 # Overview
 I want to spend my time turning my thoughts into code.
-I therefore want as little navigation process as possible. I always aim for speed of though navigation. Using the mouse or search hotkeys to find code I want to go to is always a huge dissapointment.
+I therefore want as little navigation process as possible. I always aim for speed of thought navigation. Using the mouse or search hotkeys to find code I want to go to is always a huge dissapointment.
 
 With Roku scenegraph development, one can find themselves having to constantly move between a few files. These are:
 
