@@ -23,3 +23,6 @@ This is the point of this plugin.
  - Switch between brs and xml files (Apple+2)
  - More to come soon - submit feature requests, and we'll see what we can do.
  
+# Installation
+ - In Eclipse's install new software window, add `rokucomfort/RokuComfortSite/` as a new site
+ - Install the RokuComfortFeature
